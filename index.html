@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6 Tahun Bersama 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;1,500;1,600&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <canvas id="hearts"></canvas>
+
+  <!-- Layar mulai: ketuk untuk memutar lagu dan memulai -->
+  <div id="splash" class="splash" role="button" tabindex="0" aria-label="Hitung mundur sebelum kejutan dimulai">
+    <div class="splash-heart" id="spIcon">🔒</div>
+    <h2 class="sp-title" id="spTitle">Sebentar lagi, sayang...</h2>
+    <p class="sp-sub" id="spSub">Dibuka nya tanggal <b id="spDate"></b> yaa bebe</p>
+    <div class="sp-count" id="spCount">
+      <div><b id="sDays">0</b><span>Hari</span></div>
+      <div><b id="sHours">0</b><span>Jam</span></div>
+      <div><b id="sMins">0</b><span>Menit</span></div>
+      <div><b id="sSecs">0</b><span>Detik</span></div>
+    </div>
+  </div>
+
+  <!-- Hitung 3-2-1 dengan hujan teks -->
+  <div id="matrix" class="matrix">
+    <canvas id="rain"></canvas>
+    <div id="mxNum" class="mx-num"></div>
+    <div id="mxHeart" class="mx-heart">
+      <div class="mx-heart-in">
+        <svg viewBox="0 0 32 29" aria-hidden="true">
+          <path
+            d="M23.6 0c-3 0-5.7 1.5-7.6 3.9C14.1 1.5 11.4 0 8.4 0 3.8 0 0 3.8 0 8.4c0 9.8 16 20.6 16 20.6s16-10.8 16-20.6C32 3.8 28.2 0 23.6 0z" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Layar pembuka -->
+  <div id="intro" class="intro hidden">
+    <div class="intro-box">
+      <h2>Ada surat buat kamu...</h2>
+      <div id="envelope" class="envelope" role="button" tabindex="0" aria-label="Buka surat">
+        <div class="env-back"></div>
+        <div class="env-letter"><span>💌</span>
+          <p>Buat kamu,<br>sayang</p>
+        </div>
+        <div class="env-front"></div>
+        <div class="env-flap"></div>
+        <div class="env-seal">♥</div>
+      </div>
+      <p class="small tap" id="tapHint">Klik buat buka suratnya bebe</p>
+      <button id="continueBtn" class="btn cont hidden">Lanjut 💖</button>
+    </div>
+    <div id="fly" class="fly"></div>
+
+    <!-- Kertas ucapan -->
+    <div id="paper" class="paper hidden">
+      <div class="paper-card" id="paperText"></div>
+      <button id="paperBtn" class="btn hidden">Lanjut 💖</button>
+    </div>
+
+    <!-- Bar "seberapa sayang" -->
+    <div id="love" class="love hidden">
+      <h2 id="loveTitle"></h2>
+      <div class="love-heart" id="loveHeart">💔</div>
+      <div class="love-val" id="loveVal">0%</div>
+      <input type="range" id="loveRange" min="0" max="200" value="0" aria-label="Seberapa sayang">
+      <p class="love-msg" id="loveMsg"></p>
+      <button id="loveNext" class="btn hidden">Lanjut 💖</button>
+    </div>
+
+    <!-- Pertanyaan: mau main ga? -->
+    <div id="ask" class="love ask hidden">
+      <div class="love-heart">🎮</div>
+      <h2 id="askTitle"></h2>
+      <p class="love-msg" id="askMsg">Pilih salah satu yaa 💕</p>
+      <div class="ask-btns">
+        <button id="noBtn" class="opt no">Gamau</button>
+        <button id="yesBtn" class="opt yes">Gasss</button>
+      </div>
+    </div>
+
+    <!-- Pilihan tujuan main -->
+    <div id="where" class="love where hidden">
+      <h2 id="whereTitle"></h2>
+      <p class="love-msg" id="whereMsg">Pilih satu yaa 💕</p>
+      <div class="where-grid" id="whereGrid"></div>
+    </div>
+  </div>
+
+
+  <!-- Penutup: kembang api + kata-kata -->
+  <div id="finale" class="finale hidden">
+    <canvas id="fw"></canvas>
+    <div id="finLine" class="fin-line"></div>
+  </div>
+
+  <button id="musicBtn" class="music" title="Putar/jeda musik">🎵</button>
+
+  <!-- PIN pembuka amplop -->
+  <div id="pin" class="pin hidden">
+    <div class="pin-card">
+      <h3 id="pinTitle">Masukkin PIN nya duluuu!!</h3>
+      <div class="pin-dots"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="pin-keys">
+        <button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button>
+        <button data-k="4">4</button><button data-k="5">5</button><button data-k="6">6</button>
+        <button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button>
+        <span></span><button data-k="0">0</button><button data-k="del" aria-label="Hapus">⌫</button>
+      </div>
+      <p class="pin-clue" id="pinClue"></p>
+    </div>
+  </div>
+
+  <audio id="bgm" loop>
+    <!-- Lagu: lagu/lagu2.mp3 -->
+    <source src="lagu/lagu2.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
