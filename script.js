@@ -1,7 +1,7 @@
 /* ====== CONFIG: EDIT BAGIAN INI ====== */
 const CONFIG = {
   names: 'Dia & Kamu',                 // contoh: 'Budi & Siti'
-  targetDate: '2026-10-10T00:00:00',   // web baru bisa dimulai pada tanggal ini (hitung mundur)
+  targetDate: '2026-10-09T00:00:00',   // web baru bisa dimulai pada tanggal ini (hitung mundur)
   pin: '201010',                       // PIN untuk membuka amplop
   pinClue: 'Anniversary Date',            // petunjuk di bawah keypad
   paper: [                             // isi kertas ucapan (satu baris = satu paragraf)
